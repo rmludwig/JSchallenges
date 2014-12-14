@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Challenge Viewer</title>
+  <script src="challenge1.js"></script>
+  <script src="challenge2.js"></script>
+  <script src="challenge3.js"></script>
+</head>
+
+<!--
+This is a simple bit of HTML to display my JS challenge 
+results in a web page. IT was used for testing along
+with the developer tools console.
+
+Use for testing only.
+-->
+
+<body style="font-family:Arial, Helvetica, sans-serif">
+  <h1><center>Challenge Viewer</center></h1>
+  <h3><center>This is a simple page to view JS test results.</center></h3>
+
+  <!-- Challenge 1 section populated by script below -->
+  <div id='challenge1'>
+    <h4>CHALLENGE 1</h4>
+    <pre>
+      <div id='result1'>
+      Results go here... 
+      </div>
+    </pre>
+  </div>
+
+  <!-- Challenge 2 section populated by script below -->
+  <div id='challenge2'>
+    <h4>CHALLENGE 2</h4>
+    <pre>
+      <div id='result2'>
+      Results go here... 
+      </div>
+    </pre>
+  </div>
+  
+  <!-- Challenge 3 section populated by script below -->
+  <div id='challenge3'>
+    <h4>CHALLENGE 3</h4>
+    <pre>
+      <div id='result3'>
+      Results go here... 
+      </div>
+    </pre>
+  </div>
+  
+</body>
+</html>
+
+<script>
+// Prepage Challenge 1 
+var ch1Tests = ['1,4', 
+                '1,1', 
+				'"that",2', 
+				'"this"," something else"', 
+				'3', 
+				'"hi"', 
+				'NaN', 
+				'NaN, undefined'];
+
+//Start the output
+var ch1Output = "Test : <br>Results<br><br>";
+
+// Call my test methods and build HTML
+for(var test in ch1Tests){
+	ch1Output += "TESTING "+ch1Tests[test] + " : <br>RESULTS = ";
+	ch1Output += getRelationship(ch1Tests[test]);
+	ch1Output += "<br>";
+}
+
+//set HTML in the div
+document.getElementById("result1").innerHTML = ch1Output;
+
+// Prepage Challenge 2 
+var moonWalkersUnsorted = [
+  "Neil Armstrong",
+  "Buzz Aldrin",
+  "Pete Conrad",
+  "Alan Bean",
+  "Alan Shepard",
+  "Edgar Mitchell",
+  "David Scott",
+  "James Irwin",
+  "John Young",
+  "Charles Duke",
+  "Eugene Cernan",
+  "Harrison Schmitt"
+];
+
+// Start of output
+var ch2Output;
+ch2Output  = "Unsorted Moonwalkers :<br>";
+ch2Output += stringifyWalkerArray(moonWalkers);
+ch2Output += "<br><br>";
+
+// Call my test methods and build HTML
+ch2Output += "Using Challenge 2 sorting function :<br>";
+ch2Output += stringifyWalkerArray(alphabetizer(moonWalkers));
+ch2Output += "<br>";
+
+//function for stringifying an array to make it nicer to look at.
+function stringifyWalkerArray(walkers){
+	var stringified = "";
+	for(guy in walkers) {
+		stringified += "   " + walkers[guy] + "<br>";
+	}
+	return stringified;
+}
+
+//set HTML in the div
+document.getElementById("result2").innerHTML = ch2Output;
+
+// Prepage Challenge 3 
+var myPSImessages = "";
+var myPSIbytes = 0;
+
+// Call my test methods and build HTML
+var ch3Output;
+ch3Output  = "PSI messages : ";
+ch3Output += ruleList(psinsights);
+ch3Output += "<br>";
+ch3Output += "PSI Total Bytes : ";
+ch3Output += totalBytes(psinsights);
+ch3Output += "<br>";
+
+//set HTML in the div
+document.getElementById("result3").innerHTML = ch3Output;
+
+
+</script>
